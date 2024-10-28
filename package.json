@@ -1,6 +1,6 @@
 {
   "name": "@waonpad/waonpad-lib-bun",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "waonpad",
   "repository": {
     "type": "git",
@@ -11,7 +11,6 @@
     "@biomejs/biome": "^1.9.4",
     "@types/bun": "latest",
     "lefthook": "^1.8.1",
-    "rimraf": "^6.0.1",
     "vitest": "^2.1.4"
   },
   "peerDependencies": {
@@ -22,9 +21,9 @@
   },
   "description": "",
   "files": [
-    "src",
     "dist",
     "tsconfig.json",
+    "tsconfig.build.json",
     "!**/*.test.*"
   ],
   "homepage": "https://github.com/waonpad/waonpad-lib-bun#readme",
@@ -33,7 +32,7 @@
   "private": false,
   "scripts": {
     "prepare": "lefthook install",
-    "prepublishOnly": "$npm_execpath run t && $npm_execpath run test && $npm_execpath run build",
+    "prepublishOnly": "bun run t && bun run test && bun run build",
     "fmt": "biome format --write .",
     "lnt": "biome lint --write .",
     "che": "biome check --write .",
@@ -41,9 +40,10 @@
     "test:w": "vitest watch --silent",
     "test:ci": "vitest run --silent",
     "t": "tsc --noEmit",
-    "build": "$npm_execpath run clean && $npm_execpath run build:types",
+    "build": "bun run clean && bun run copy && bun run build:types",
     "build:types": "tsc --project tsconfig.build.json",
-    "clean": "rimraf dist",
+    "clean": "rm -rf ./dist",
+    "copy": "cp -r ./src/ ./dist/",
     "publish": "npm publish --access public",
     "v:patch": "npm version patch",
     "v:minor": "npm version minor",
@@ -55,6 +55,6 @@
     "@waonpad/waonpad-lib": "^0.2.2"
   },
   "exports": {
-    ".": "./src/*"
+    "./*": "./dist/*"
   }
 }
