@@ -21,9 +21,8 @@
   },
   "description": "",
   "files": [
-    "dist",
+    "src",
     "tsconfig.json",
-    "tsconfig.build.json",
     "!**/*.test.*"
   ],
   "homepage": "https://github.com/waonpad/waonpad-lib-bun#readme",
@@ -32,7 +31,7 @@
   "private": false,
   "scripts": {
     "prepare": "lefthook install",
-    "prepublishOnly": "bun run t && bun run test && bun run build",
+    "prepublishOnly": "bun run t && bun run test",
     "fmt": "biome format --write .",
     "lnt": "biome lint --write .",
     "che": "biome check --write .",
@@ -40,10 +39,6 @@
     "test:w": "vitest watch --silent",
     "test:ci": "vitest run --silent",
     "t": "tsc --noEmit",
-    "build": "bun run clean && bun run copy && bun run build:types",
-    "build:types": "tsc --project tsconfig.build.json",
-    "clean": "rm -rf ./dist",
-    "copy": "cp -r ./src/ ./dist/",
     "publish": "npm publish --access public",
     "v:patch": "npm version patch",
     "v:minor": "npm version minor",
@@ -55,6 +50,6 @@
     "@waonpad/waonpad-lib": "^0.2.2"
   },
   "exports": {
-    "./*": "./dist/*"
+    "./*": "./src/*"
   }
 }
