@@ -1,10 +1,10 @@
 {
-  "name": "@waonpad/waonpad-lib-bun",
-  "version": "0.1.2",
+  "name": "@waonpad/waonpad-lib-ts",
+  "version": "0.1.0",
   "author": "waonpad",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/waonpad/waonpad-lib-bun.git",
+    "url": "git+https://github.com/waonpad/waonpad-lib-ts.git",
     "directory": ""
   },
   "devDependencies": {
@@ -16,8 +16,11 @@
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
+  "exports": {
+    "./*": "./src/*.ts"
+  },
   "bugs": {
-    "url": "https://github.com/waonpad/waonpad-lib-bun/issues"
+    "url": "https://github.com/waonpad/waonpad-lib-ts/issues"
   },
   "description": "",
   "files": [
@@ -25,31 +28,24 @@
     "tsconfig.json",
     "!**/*.test.*"
   ],
-  "homepage": "https://github.com/waonpad/waonpad-lib-bun#readme",
+  "homepage": "https://github.com/waonpad/waonpad-lib-ts#readme",
   "keywords": [],
   "license": "Unlicense",
   "private": false,
   "scripts": {
     "prepare": "lefthook install",
-    "prepublishOnly": "bun run t && bun run test",
+    "prepublishOnly": "bun run tsc && bun run test",
     "fmt": "biome format --write .",
     "lnt": "biome lint --write .",
     "che": "biome check --write .",
     "test": "vitest run",
     "test:w": "vitest watch --silent",
     "test:ci": "vitest run --silent",
-    "t": "tsc --noEmit",
     "publish": "npm publish --access public",
     "v:patch": "npm version patch",
     "v:minor": "npm version minor",
     "v:major": "npm version major"
   },
   "sideEffects": false,
-  "type": "module",
-  "dependencies": {
-    "@waonpad/waonpad-lib": "^0.2.2"
-  },
-  "exports": {
-    "./*": "./src/*.ts"
-  }
+  "type": "module"
 }
