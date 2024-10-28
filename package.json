@@ -50,6 +50,6 @@
     "@waonpad/waonpad-lib": "^0.2.2"
   },
   "exports": {
-    "./*": "./src/*"
+    "./*": "./src/*.ts"
   }
 }
