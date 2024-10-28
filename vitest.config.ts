@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [],
   test: {
     globals: false,
-    include: ["src/**/*.test.{ts}"],
+    include: ["src/**/*.test.ts"],
     alias: {
       "@": resolve(__dirname, "./src"),
     },
